@@ -1,5 +1,5 @@
 ## Getting Started
-
+ADDED INFORMATION
 1. **Clone the repo and install dependencies:**
    ```bash
    git clone https://github.com/cohack-team/Interview_ai_cohack.git
