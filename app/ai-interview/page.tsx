@@ -41,7 +41,7 @@ export default function AIInterview() {
             {/* AI Chat Interface */}
             <div className="glass-card rounded-2xl p-6 mb-6">
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 rounded-full bg-button-gradient flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 rounded-full bg-button-gradient flex items-center justify-center shrink-0">
                   <Bot className="w-6 h-6 text-primary-foreground" />
                 </div>
                 <div className="flex-1">
@@ -86,7 +86,7 @@ export default function AIInterview() {
                       </div>
                     )}
                   </div>
-                  <Button variant="hero" size="lg" className="rounded-full gap-2">
+                  <Button size="lg" className="rounded-full gap-2 bg-teal-500 hover:bg-teal-600 text-white">
                     <Send className="w-5 h-5" />
                     Submit Answer
                   </Button>
