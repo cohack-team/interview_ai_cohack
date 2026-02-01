@@ -1,10 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Bot } from "lucide-react";
+import { Bot, ChevronDown, LogOut, User } from "lucide-react";
+import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { auth, db } from "@/firebase/client";
+import { useUserStore } from "@/hooks/userUser";
+import { toast } from "sonner";
+import type { UserProfile } from "@/types";
 import {
   Dialog,
   DialogContent,
