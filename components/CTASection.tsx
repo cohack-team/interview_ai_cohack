@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Rocket } from "lucide-react";
+import Link from "next/link";
 
 const CTASection = () => {
   return (
-    <section className="relative py-24 px-6 bg-gradient-to-br from-primary/10 via-background to-secondary/10 overflow-hidden">
+    <section className="relative py-24 px-6 bg-linear-to-br from-primary/10 via-background to-secondary/10 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
       <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-secondary/5 blur-3xl" />
@@ -25,13 +26,17 @@ const CTASection = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button className="rounded-full px-8 gap-2 group" size="lg">
-            Get Started Free
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
-          <Button variant="outline" size="lg" className="rounded-full px-8">
-            View Pricing
-          </Button>
+          <Link href="/practice">
+            <Button className="rounded-full px-8 gap-2 group" size="lg">
+              Get Started Free
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
+          <Link href="/pricing">
+            <Button variant="outline" size="lg" className="rounded-full px-8">
+              View Pricing
+            </Button>
+          </Link>
         </div>
 
         {/* Stats */}

@@ -76,7 +76,7 @@ const FeatureCard = ({
   delay: number;
 }) => (
   <div 
-    className="group glass-card rounded-2xl p-6 transition-all duration-300 cursor-pointer hover:-translate-y-2 hover:feature-card-active hover:scale-[1.02]"
+    className="group glass-card rounded-2xl p-6 transition-all duration-300 cursor-pointer hover:-translate-y-2 hover:scale-[1.02] bg-secondary hover:bg-emerald-500/15"
     style={{ animationDelay: `${delay}s` }}
   >
     <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all duration-300 bg-button-gradient group-hover:scale-110 group-hover:shadow-glow">

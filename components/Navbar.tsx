@@ -21,6 +21,14 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
   const [isSignInOpen, setIsSignInOpen] = useState(false);
@@ -110,8 +118,19 @@ const Navbar = () => {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      setUser(null);
+      setIsAuthenticated();
+      toast.success("Logged out successfully");
+    } catch (err: any) {
+      toast.error(err?.message || "Logout failed");
+    }
+  };
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 mx-5 my-4 p-3 rounded-2xl bg-background/70 shadow-gray-600 border-2 border-foreground/10 backdrop-blur-md">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
@@ -123,6 +142,13 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         <div className="hidden md:flex items-center nav-glass rounded-full px-2 py-1.5">
+          <a
+            href="#home"
+            onClick={(e) => handleScrollToSection(e, "home")}
+            className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-accent/50"
+          >
+            Home
+          </a>
           <a
             href="#about"
             onClick={(e) => handleScrollToSection(e, "features")}
@@ -189,19 +215,19 @@ const Navbar = () => {
               </DialogTrigger>
               <DialogContent className="sm:max-w-md">
               <DialogHeader>
-                <DialogTitle className="text-2xl font-display">Welcome Back</DialogTitle>
-                <DialogDescription>
+                <DialogTitle className="text-xl font-display">Welcome Back</DialogTitle>
+                <DialogDescription className="text-sm">
                   Login to continue your interview preparation journey
                 </DialogDescription>
               </DialogHeader>
-              <form className="space-y-4 mt-4">
-                <div className="space-y-2">
-                  <Label htmlFor="login-email">Email</Label>
-                  <Input id="login-email" type="email" placeholder="Enter your email" />
+              <form className="space-y-3 mt-3">
+                <div className="space-y-1">
+                  <Label htmlFor="login-email" className="text-sm">Email</Label>
+                  <Input id="login-email" type="email" placeholder="Enter your email" className="h-9" />
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="login-password">Password</Label>
-                  <Input id="login-password" type="password" placeholder="Enter your password" />
+                <div className="space-y-1">
+                  <Label htmlFor="login-password" className="text-sm">Password</Label>
+                  <Input id="login-password" type="password" placeholder="Enter your password" className="h-9" />
                 </div>
                 <Button type="submit" className="w-full rounded-full bg-teal-500 hover:bg-teal-600 text-white">
                   Login
@@ -251,7 +277,7 @@ const Navbar = () => {
                       setIsLoginOpen(false);
                       setIsSignInOpen(true);
                     }}
-                    className="text-primary hover:underline font-medium"
+                    className="text-primary hover:underline font-medium py-3 m-2"
                   >
                     Sign Up
                   </button>
@@ -267,29 +293,29 @@ const Navbar = () => {
                 Sign Up
               </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-md">
+            <DialogContent className="sm:max-w-md max-h-[90vh] overflow-y-auto">
               <DialogHeader>
-                <DialogTitle className="text-2xl font-display">Create Account</DialogTitle>
-                <DialogDescription>
+                <DialogTitle className="text-xl font-display">Create Account</DialogTitle>
+                <DialogDescription className="text-sm">
                   Join InterviewIQ and ace your next interview
                 </DialogDescription>
               </DialogHeader>
-              <form className="space-y-4 mt-4">
-                <div className="space-y-2">
-                  <Label htmlFor="signup-name">Full Name</Label>
-                  <Input id="signup-name" type="text" placeholder="Enter your name" />
+              <form className="space-y-3 mt-3">
+                <div className="space-y-1">
+                  <Label htmlFor="signup-name" className="text-sm">Full Name</Label>
+                  <Input id="signup-name" type="text" placeholder="Enter your name" className="h-9" />
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="signup-email">Email</Label>
-                  <Input id="signup-email" type="email" placeholder="Enter your email" />
+                <div className="space-y-1">
+                  <Label htmlFor="signup-email" className="text-sm">Email</Label>
+                  <Input id="signup-email" type="email" placeholder="Enter your email" className="h-9" />
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="signup-password">Password</Label>
-                  <Input id="signup-password" type="password" placeholder="Create a password" />
+                <div className="space-y-1">
+                  <Label htmlFor="signup-password" className="text-sm">Password</Label>
+                  <Input id="signup-password" type="password" placeholder="Create a password" className="h-9" />
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="signup-confirm">Confirm Password</Label>
-                  <Input id="signup-confirm" type="password" placeholder="Confirm your password" />
+                <div className="space-y-1">
+                  <Label htmlFor="signup-confirm" className="text-sm">Confirm Password</Label>
+                  <Input id="signup-confirm" type="password" placeholder="Confirm your password" className="h-9" />
                 </div>
                 <Button
                   type="submit"
@@ -342,7 +368,7 @@ const Navbar = () => {
                       setIsSignInOpen(false);
                       setIsLoginOpen(true);
                     }}
-                    className="text-primary hover:underline font-medium"
+                    className="text-primary hover:underline font-medium py-3 m-2"
                   >
                     Login
                   </button>
