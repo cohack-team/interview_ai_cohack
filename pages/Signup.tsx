@@ -197,7 +197,7 @@ const Signup = () => {
                 </div>
               )}
               {success && (
-                <div className="bg-teal100 border border-teal400 text-teal700 px-4 py-2 rounded text-center mb-2">
+                <div className="bg-teal-100 border border-teal-400 text-teal-700 px-4 py-2 rounded text-center mb-2">
                   {success}
                 </div>
               )}
