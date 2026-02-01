@@ -45,28 +45,27 @@ const Footer = () => {
             <div>
               <h4 className="font-semibold mb-4 text-primary">Product</h4>
               <ul className="space-y-2 text-sm text-background/70">
-                <li><a href="#" className="hover:text-primary transition-colors">Features</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Pricing</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Demo</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">API</a></li>
+                <li><a href="/#features" className="hover:text-primary transition-colors">Features</a></li>
+                <li><a href="/pricing" className="hover:text-primary transition-colors">Pricing</a></li>
+                <li><a href="/practice" className="hover:text-primary transition-colors">Demo</a></li>
+                <li><a href="/ai-interview" className="hover:text-primary transition-colors">API</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4 text-primary">Company</h4>
               <ul className="space-y-2 text-sm text-background/70">
-                <li><a href="#" className="hover:text-primary transition-colors">About</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Contact</a></li>
+                <li><a href="/about" className="hover:text-primary transition-colors">About</a></li>
+                <li><a href="/blog" className="hover:text-primary transition-colors">Blog</a></li>
+                <li><a href="/jobs" className="hover:text-primary transition-colors">Careers</a></li>
+                <li><a href="/contact" className="hover:text-primary transition-colors">Contact</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4 text-primary">Resources</h4>
               <ul className="space-y-2 text-sm text-background/70">
-                <li><a href="#" className="hover:text-primary transition-colors">Help Center</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Guides</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Community</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Templates</a></li>
+                <li><a href="/help-center" className="hover:text-primary transition-colors">Help Center</a></li>
+                <li><a href="/guides" className="hover:text-primary transition-colors">Guides</a></li>
+                <li><a href="/community" className="hover:text-primary transition-colors">Community</a></li>
               </ul>
             </div>
             <div>
@@ -76,15 +75,30 @@ const Footer = () => {
                 hello@interviewiq.ai
               </div>
               <div className="flex gap-3 mt-4">
-                {['Twitter', 'LinkedIn', 'GitHub'].map((social) => (
-                  <a
-                    key={social}
-                    href="#"
-                    className="w-9 h-9 rounded-full bg-background/10 flex items-center justify-center text-xs font-medium hover:bg-primary hover:text-primary-foreground transition-all"
-                  >
-                    {social[0]}
-                  </a>
-                ))}
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-full bg-background/10 flex items-center justify-center text-xs font-medium hover:bg-primary hover:text-primary-foreground transition-all"
+                >
+                  T
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-full bg-background/10 flex items-center justify-center text-xs font-medium hover:bg-primary hover:text-primary-foreground transition-all"
+                >
+                  L
+                </a>
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-full bg-background/10 flex items-center justify-center text-xs font-medium hover:bg-primary hover:text-primary-foreground transition-all"
+                >
+                  G
+                </a>
               </div>
             </div>
           </div>
@@ -99,9 +113,9 @@ const Footer = () => {
             </div>
             <p>© 2026 InterviewIQ. All rights reserved.</p>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-primary transition-colors">Privacy</a>
-              <a href="#" className="hover:text-primary transition-colors">Terms</a>
-              <a href="#" className="hover:text-primary transition-colors">Cookies</a>
+              <a href="/privacy" className="hover:text-primary transition-colors">Privacy</a>
+              <a href="/terms" className="hover:text-primary transition-colors">Terms</a>
+              <a href="/cookies" className="hover:text-primary transition-colors">Cookies</a>
             </div>
           </div>
         </div>

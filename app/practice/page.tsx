@@ -20,58 +20,93 @@ import {
   Code, 
   Briefcase, 
   TrendingUp, 
-  Users, 
-  Clock, 
+  Users,
   ArrowRight,
   Play,
-  CheckCircle2,
-  Star,
   Lock
 } from "lucide-react";
 
 const practiceCategories = [
   {
-    icon: Briefcase,
-    title: "Behavioral Interview",
-    description: "Practice common behavioral questions using the STAR method",
-    questions: 50,
-    difficulty: "Beginner",
-    color: "from-emerald-500 to-teal-500"
-  },
-  {
     icon: Code,
-    title: "Technical Interview",
-    description: "Coding challenges and system design questions",
-    questions: 120,
-    difficulty: "Advanced",
+    title: "Frontend Developer",
+    description: "React, Vue, Angular, HTML/CSS, JavaScript interview questions",
+    questions: 85,
+    difficulty: "Intermediate",
     color: "from-blue-500 to-cyan-500"
   },
   {
-    icon: TrendingUp,
-    title: "Case Study",
-    description: "Business case interviews for consulting roles",
-    questions: 35,
+    icon: Code,
+    title: "Backend Developer",
+    description: "Node.js, Python, Java, APIs, Database design questions",
+    questions: 95,
+    difficulty: "Advanced",
+    color: "from-green-500 to-emerald-500"
+  },
+  {
+    icon: Brain,
+    title: "Python Developer",
+    description: "Python programming, Django, Flask, data structures",
+    questions: 70,
     difficulty: "Intermediate",
+    color: "from-yellow-500 to-orange-500"
+  },
+  {
+    icon: TrendingUp,
+    title: "Data Scientist",
+    description: "ML, Statistics, Python, R, Data analysis questions",
+    questions: 80,
+    difficulty: "Advanced",
     color: "from-purple-500 to-pink-500"
   },
   {
-    icon: Users,
-    title: "Leadership",
-    description: "Management and leadership scenario questions",
-    questions: 40,
+    icon: Brain,
+    title: "Machine Learning Engineer",
+    description: "Deep Learning, NLP, Computer Vision, Model deployment",
+    questions: 75,
+    difficulty: "Advanced",
+    color: "from-indigo-500 to-purple-500"
+  },
+  {
+    icon: Code,
+    title: "Full Stack Developer",
+    description: "Frontend + Backend, DevOps, System design",
+    questions: 120,
+    difficulty: "Advanced",
+    color: "from-teal-500 to-cyan-500"
+  },
+  {
+    icon: Briefcase,
+    title: "Product Manager",
+    description: "Product strategy, roadmap, user research, metrics",
+    questions: 60,
     difficulty: "Intermediate",
-    color: "from-orange-500 to-amber-500"
+    color: "from-orange-500 to-red-500"
+  },
+  {
+    icon: Users,
+    title: "DevOps Engineer",
+    description: "CI/CD, Docker, Kubernetes, Cloud platforms",
+    questions: 65,
+    difficulty: "Advanced",
+    color: "from-emerald-500 to-teal-500"
   }
 ];
 
-const recentSessions = [
-  { title: "Behavioral - Tell me about yourself", score: 85, date: "2 hours ago" },
-  { title: "Technical - System Design", score: 72, date: "Yesterday" },
-  { title: "Case Study - Market Entry", score: 90, date: "3 days ago" },
-];
-
-// Secret key for behavioral interview access - to be defined later
+// Secret key for behavioral interview access
 const BEHAVIORAL_SECRET_KEY = ""; // Add your secret key here
+
+// Map categories to job IDs
+const categoryJobMap: Record<number, string> = {
+  0: "frontend-developer",
+  1: "backend-developer",
+  2: "python-developer",
+  3: "data-scientist",
+  4: "ml-engineer",
+  5: "fullstack-developer",
+  6: "product-manager",
+  7: "devops-engineer"
+};
 
 export default function Practice() {
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
@@ -81,26 +116,22 @@ export default function Practice() {
   const { toast } = useToast();
 
   const handleStartPractice = () => {
-    if (selectedCategory === 0) {
-      // Behavioral Interview - requires secret key
-      setIsSecretDialogOpen(true);
-    } else {
-      // Other categories - coming soon
-      toast({
-        title: "Coming Soon",
-        description: "This practice category will be available soon!",
-      });
-    }
+    // Open secret dialog for any category
+    setIsSecretDialogOpen(true);
   };
 
   const handleSecretKeySubmit = () => {
+    if (selectedCategory === null) return;
+    
+    const jobId = categoryJobMap[selectedCategory];
+    
     if (BEHAVIORAL_SECRET_KEY === "") {
-      // No secret key defined yet - allow access
-      router.push("/ai-interview");
+      // No secret key defined yet - go to job detail page
+      router.push(`/jobs/${jobId}`);
       setIsSecretDialogOpen(false);
       setSecretKeyInput("");
     } else if (secretKeyInput === BEHAVIORAL_SECRET_KEY) {
-      router.push("/ai-interview");
+      router.push(`/jobs/${jobId}`);
       setIsSecretDialogOpen(false);
       setSecretKeyInput("");
     } else {
@@ -134,22 +165,6 @@ export default function Practice() {
               </p>
             </div>
 
-            {/* Quick Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-              {[
-                { label: "Sessions Completed", value: "12", icon: CheckCircle2 },
-                { label: "Average Score", value: "82%", icon: Star },
-                { label: "Practice Hours", value: "8.5", icon: Clock },
-                { label: "Questions Answered", value: "156", icon: Brain }
-              ].map((stat, i) => (
-                <div key={i} className="glass-card rounded-xl p-4 text-center">
-                  <stat.icon className="w-6 h-6 text-primary mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-foreground">{stat.value}</div>
-                  <div className="text-xs text-muted-foreground">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-
             {/* Categories Grid */}
             <h2 className="text-xl font-semibold mb-6 text-foreground">Choose Category</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
@@ -157,34 +172,28 @@ export default function Practice() {
                 <div
                   key={index}
                   onClick={() => setSelectedCategory(selectedCategory === index ? null : index)}
-                  className={`glass-card rounded-2xl p-6 cursor-pointer transition-all duration-300 hover:-translate-y-1 ${
-                    selectedCategory === index ? 'ring-2 ring-primary shadow-glow' : ''
+                  className={`p-6 rounded-xl border bg-card cursor-pointer transition-all duration-300 hover:shadow-lg hover:border-emerald-500 ${
+                    selectedCategory === index ? 'ring-2 ring-emerald-500 border-emerald-500' : ''
                   }`}
                 >
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center mb-4`}>
-                    <category.icon className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center mb-4">
+                    <category.icon className="w-6 h-6 text-emerald-600" />
                   </div>
                   <h3 className="font-semibold text-foreground mb-2">{category.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{category.description}</p>
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="text-primary font-medium">{category.questions} questions</span>
-                    <span className="px-2 py-1 rounded-full bg-secondary text-secondary-foreground">
-                      {category.difficulty}
-                    </span>
-                  </div>
+                  <p className="text-sm text-muted-foreground">{category.description}</p>
                 </div>
               ))}
             </div>
 
             {/* Start Practice Button */}
             {selectedCategory !== null && (
-              <div className="text-center mb-12 animate-fade-in">
+              <div className="text-center animate-fade-in">
                 <Button 
                   className="rounded-full px-8 gap-2 bg-button-gradient hover:opacity-90" 
                   size="lg"
                   onClick={handleStartPractice}
                 >
-                  {selectedCategory === 0 && <Lock className="w-4 h-4" />}
+                  <Lock className="w-4 h-4" />
                   <Play className="w-5 h-5" />
                   Start {practiceCategories[selectedCategory].title} Practice
                   <ArrowRight className="w-4 h-4" />
@@ -192,7 +201,7 @@ export default function Practice() {
               </div>
             )}
 
-            {/* Secret Key Dialog for Behavioral Interview */}
+            {/* Secret Key Dialog */}
             <Dialog open={isSecretDialogOpen} onOpenChange={setIsSecretDialogOpen}>
               <DialogContent className="sm:max-w-md">
                 <DialogHeader>
@@ -201,7 +210,7 @@ export default function Practice() {
                     Enter Secret Key
                   </DialogTitle>
                   <DialogDescription>
-                    Enter the secret key to access the Behavioral Interview practice session.
+                    Enter the secret key to access the AI Interview practice session.
                   </DialogDescription>
                 </DialogHeader>
                 <div className="space-y-4 mt-4">
@@ -226,38 +235,10 @@ export default function Practice() {
                 </div>
               </DialogContent>
             </Dialog>
-
-            {/* Recent Sessions */}
-            <div className="glass-card rounded-2xl p-6">
-              <h2 className="text-xl font-semibold mb-6 text-foreground">Recent Sessions</h2>
-              <div className="space-y-4">
-                {recentSessions.map((session, index) => (
-                  <div key={index} className="flex items-center justify-between p-4 rounded-xl bg-muted/50 hover:bg-muted transition-colors">
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                        <Brain className="w-5 h-5 text-primary" />
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-foreground">{session.title}</h4>
-                        <p className="text-xs text-muted-foreground">{session.date}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <div className={`text-lg font-bold ${session.score >= 80 ? 'text-primary' : session.score >= 60 ? 'text-yellow-500' : 'text-red-500'}`}>
-                        {session.score}%
-                      </div>
-                      <Button variant="outline" size="sm" className="rounded-full">
-                        Review
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
       </main>
-
+      
       <Footer />
     </div>
   );
