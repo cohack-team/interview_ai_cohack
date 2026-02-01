@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import ChatMockup from "./ChatMockup";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -35,10 +36,12 @@ const HeroSection = () => {
               Practice makes perfect. Our AI interviewer simulates real interview scenarios, provides instant feedback, and helps you build confidence to land your dream job.
             </p>
             
-            <Button variant="hero" size="lg" className="rounded-full px-8 gap-2 group">
-              Start My Interview
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <Link href="/ai-interview">
+              <Button variant="hero" size="lg" className="rounded-full px-8 gap-2 group shadow-lg hover:shadow-xl transition-all bg-emerald-600 hover:bg-emerald-700 text-white">
+                Start My Interview
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
           </div>
 
           {/* Right content - Chat mockup */}
