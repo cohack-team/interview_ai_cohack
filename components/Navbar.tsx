@@ -124,7 +124,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 mx-5 my-4 p-3 rounded-2xl bg-background/70 shadow-gray-600 border-2 border-foreground/10 backdrop-blur-md">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
@@ -282,7 +282,7 @@ const Navbar = () => {
                       setIsLoginOpen(false);
                       setIsSignInOpen(true);
                     }}
-                    className="text-primary hover:underline font-medium"
+                    className="text-primary hover:underline font-medium py-3 m-2"
                   >
                     Sign Up
                   </button>
@@ -322,7 +322,7 @@ const Navbar = () => {
                   <Label htmlFor="signup-confirm" className="text-sm">Confirm Password</Label>
                   <Input id="signup-confirm" type="password" placeholder="Confirm your password" className="h-9" />
                 </div>
-                <Button type="submit" className="w-full rounded-full h-10 bg-teal-500 hover:bg-teal-600 text-white">
+                <Button type="submit" className="w-full rounded-full h-10 bg-teal-500 hover:bg-teal-600 text-white py-3 m-2">
                   Create Account
                 </Button>
                 <div className="relative my-3">
@@ -337,7 +337,7 @@ const Navbar = () => {
                   onClick={handleGoogleAuth}
                   type="button"
                   variant="outline"
-                  className="w-full rounded-full h-10 border-2 hover:bg-secondary/50"
+                  className="w-full rounded-full h-10 border-2 hover:bg-secondary/50 py-3 m-2"
                 >
                   <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -355,7 +355,7 @@ const Navbar = () => {
                       setIsSignInOpen(false);
                       setIsLoginOpen(true);
                     }}
-                    className="text-primary hover:underline font-medium"
+                    className="text-primary hover:underline font-medium py-3 m-2"
                   >
                     Login
                   </button>
