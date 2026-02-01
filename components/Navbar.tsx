@@ -250,7 +250,7 @@ const Navbar = () => {
                   <Label htmlFor="login-password">Password</Label>
                   <Input id="login-password" type="password" placeholder="Enter your password" />
                 </div>
-                <Button type="submit" variant="hero" className="w-full rounded-full">
+                <Button type="submit" className="w-full rounded-full bg-teal-500 hover:bg-teal-600 text-white">
                   Login
                 </Button>
                 <p className="text-center text-sm text-muted-foreground">
@@ -273,7 +273,7 @@ const Navbar = () => {
           {/* Sign In Dialog */}
           <Dialog open={isSignInOpen} onOpenChange={setIsSignInOpen}>
             <DialogTrigger asChild>
-              <Button variant="hero" size="sm" className="rounded-full px-6">
+              <Button size="sm" className="rounded-full px-6 bg-teal-500 hover:bg-teal-600 text-white">
                 Sign Up
               </Button>
             </DialogTrigger>
@@ -301,7 +301,7 @@ const Navbar = () => {
                   <Label htmlFor="signup-confirm">Confirm Password</Label>
                   <Input id="signup-confirm" type="password" placeholder="Confirm your password" />
                 </div>
-                <Button type="submit" variant="hero" className="w-full rounded-full">
+                <Button type="submit" className="w-full rounded-full bg-teal-500 hover:bg-teal-600 text-white">
                   Create Account
                 </Button>
                 <p className="text-center text-sm text-muted-foreground">
@@ -320,7 +320,8 @@ const Navbar = () => {
               </form>
             </DialogContent>
           </Dialog>
-        </div>
+          </div>
+        )}
       </div>
     </nav>
   );
