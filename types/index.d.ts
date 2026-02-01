@@ -4,6 +4,10 @@ export interface UserProfile {
   displayName: string;
   provider: "google" | "github" | "email";
   profilePicture?: string;
+  bio?: string;
+  skills?: string[];
+  resumeUrl?: string;
+  resumeName?: string;
   createdAt?: string;
   updatedAt?: string;
 }
