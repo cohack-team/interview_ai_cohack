@@ -12,8 +12,8 @@ const HeroSection = () => {
       <div className="absolute bottom-20 left-1/4 w-80 h-80 rounded-full bg-emerald-100/40 blur-3xl animate-pulse-soft" style={{ animationDelay: '1.5s' }} />
       
       {/* Decorative lines */}
-      <div className="absolute top-1/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-300/30 to-transparent" />
-      <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-200/20 to-transparent" />
+      <div className="absolute top-1/3 left-0 w-full h-px bg-linear-to-r from-transparent via-emerald-300/30 to-transparent" />
+      <div className="absolute top-1/2 left-0 w-full h-px bg-linear-to-r from-transparent via-emerald-200/20 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -37,7 +37,7 @@ const HeroSection = () => {
             </p>
             
             <Link href="/ai-interview">
-              <Button variant="hero" size="lg" className="rounded-full px-8 gap-2 group shadow-lg hover:shadow-xl transition-all bg-emerald-600 hover:bg-emerald-700 text-white">
+              <Button variant="default" size="lg" className="rounded-full px-8 gap-2 group shadow-lg hover:shadow-xl transition-all bg-emerald-600 hover:bg-emerald-700 text-white">
                 Start My Interview
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>

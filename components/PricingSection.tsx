@@ -64,7 +64,7 @@ const PricingSection = () => {
       {/* Decorative elements */}
       <div className="absolute top-10 left-10 w-20 h-20 border border-primary/20 rounded-full" />
       <div className="absolute bottom-10 right-10 w-32 h-32 border border-primary/10 rounded-full" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-primary/5 rounded-full blur-3xl" />
 
       <div className="relative max-w-6xl mx-auto">
         {/* Header */}
@@ -85,18 +85,7 @@ const PricingSection = () => {
           <span className={`text-sm ${billingCycle === "monthly" ? "text-foreground font-medium" : "text-muted-foreground"}`}>
             Monthly
           </span>
-          <button
-            onClick={() => setBillingCycle(billingCycle === "monthly" ? "yearly" : "monthly")}
-            className={`relative w-14 h-7 rounded-full transition-colors ${
-              billingCycle === "yearly" ? "bg-primary" : "bg-muted"
-            }`}
-          >
-            <span
-              className={`absolute top-1 w-5 h-5 bg-white rounded-full shadow transition-transform ${
-                billingCycle === "yearly" ? "translate-x-8" : "translate-x-1"
-              }`}
-            />
-          </button>
+          
           <span className={`text-sm ${billingCycle === "yearly" ? "text-foreground font-medium" : "text-muted-foreground"}`}>
             Yearly
             <span className="ml-1.5 text-xs text-primary font-medium">Save 20%</span>
@@ -114,10 +103,10 @@ const PricingSection = () => {
             return (
               <div
                 key={plan.name}
-                className={`relative group rounded-3xl p-6 transition-all duration-300 ${
+                className={`relative group rounded-3xl p-6 transition-all duration-300 flex flex-col h-full ${
                   plan.highlighted
                     ? "bg-foreground text-background scale-105 shadow-2xl"
-                    : "bg-card border border-border hover:border-primary/50 hover:shadow-lg"
+                    : "bg-card border border-primary/50 shadow-lg"
                 }`}
               >
                 {/* Popular ribbon */}
@@ -155,10 +144,10 @@ const PricingSection = () => {
                 </div>
 
                 {/* Features */}
-                <ul className="space-y-3 mb-6">
+                <ul className="space-y-3 mb-6 flex-1">
                   {plan.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center gap-2 text-sm">
-                      <Check className={`w-4 h-4 flex-shrink-0 ${
+                      <Check className={`w-4 h-4 shrink-0 ${
                         plan.highlighted ? "text-primary" : "text-primary"
                       }`} />
                       <span className={plan.highlighted ? "text-background/90" : ""}>{feature}</span>
@@ -168,8 +157,12 @@ const PricingSection = () => {
 
                 {/* CTA */}
                 <Button
-                  variant={plan.highlighted ? "secondary" : "hero"}
-                  className="w-full rounded-full group/btn"
+                  variant={plan.highlighted ? "secondary" : "outline"}
+                  className={`w-full rounded-full group/btn transition-shadow mt-auto ${
+                    plan.highlighted
+                      ? "shadow-lg"
+                      : "border-primary/60 bg-background text-foreground shadow-md"
+                  }`}
                   size="lg"
                 >
                   {plan.buttonText}
