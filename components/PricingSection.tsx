@@ -2,6 +2,7 @@
 
 import { Check, Zap, Crown, Building2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
 
 const pricingPlans = [
@@ -85,7 +86,11 @@ const PricingSection = () => {
           <span className={`text-sm ${billingCycle === "monthly" ? "text-foreground font-medium" : "text-muted-foreground"}`}>
             Monthly
           </span>
-          
+          <Switch
+            checked={billingCycle === "yearly"}
+            onCheckedChange={(checked) => setBillingCycle(checked ? "yearly" : "monthly")}
+            aria-label="Toggle billing cycle"
+          />
           <span className={`text-sm ${billingCycle === "yearly" ? "text-foreground font-medium" : "text-muted-foreground"}`}>
             Yearly
             <span className="ml-1.5 text-xs text-primary font-medium">Save 20%</span>
