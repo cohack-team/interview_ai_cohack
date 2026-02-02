@@ -19,3 +19,5 @@ Guidelines:
 - Work in branches and always ask for pull request after a rebase from the parent branch
 - check the full working and minimize bugs before putting to production
 - always maintain gitignore, no sensitive files to be uploaded like env or any auth realted files
+- Always raise issues before adding any significant changes and assign accordingly
+  
