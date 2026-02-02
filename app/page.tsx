@@ -42,7 +42,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 h-20 bg-background">
+          {/* <div className="absolute bottom-0 left-0 right-0 h-20 bg-background">
             <svg className="absolute top-0 w-full h-20" viewBox="0 0 1440 80" preserveAspectRatio="none">
               <path
                 fill="hsl(var(--foreground))"
@@ -50,7 +50,7 @@ export default function Home() {
                 transform="translate(0, 80) scale(1, -1)"
               />
             </svg>
-          </div>
+          </div> */}
         </section>
         <CTASection />
         <FAQSection />
